@@ -8,7 +8,7 @@
 - **Language:** Danish (18th-century orthography)
 - **Script:** Gothic cursive (kurrent) and copperplate-style hands, rendered from historical-style fonts
 - **Period emulated:** ~1700-1800
-- **Full data:** hosted on Zenodo (DOI badge will appear here after publication); this repository holds the manifest, samples, and documentation
+- **Full data (DOI):** https://doi.org/10.5281/zenodo.22093255 ; this repository holds the manifest, samples, and documentation
 
 ## What this is
 
@@ -64,7 +64,7 @@ The rendered strings are drawn from public 18th-century Danish transcription cor
 If you use this dataset, please cite:
 
 ```
-Jha, A. (2026). Danish HTR Synthetic Lines (18th-century style) [Data set]. Zenodo.
+Jha, A. (2026). Danish HTR Synthetic Lines (18th-century style) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.22093255
 ```
 
 A benchmark paper describing the surrounding evaluation work is in preparation; the citation will be updated once available.
