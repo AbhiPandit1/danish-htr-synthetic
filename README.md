@@ -2,6 +2,11 @@
 
 **160,000 synthetic text-line images with exact ground truth**, generated to support handwritten text recognition (HTR) of 18th-century Danish administrative and parish records.
 
+<p align="center">
+  <img src="assets/dataset_demo.gif" alt="Synthetic Danish line images with exact ground truth" width="640" />
+</p>
+
+
 - **Author:** Abhishek Jha (224abhishekjha@gmail.com)
 - **License:** CC-BY 4.0
 - **Volume:** 160,000 lines / approximately 2.5 GB of JPEG line images
