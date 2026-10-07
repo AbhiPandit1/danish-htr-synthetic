@@ -63,11 +63,11 @@ Each regenerated line records the **font, every degradation parameter, and its s
 
 ## Source text
 
-The rendered strings are drawn from public 18th-century Danish transcription corpora (parish registers and administrative records), preserving authentic orthography, abbreviations (Dom:, Trin:, u: c:), personal and place names, and record phrasing. The text is reshuffled at line level; no source document can be reconstructed from this set.
+The rendered strings are drawn from the **DiEm HTR dataset** (*Digitalisering af Enesteministerialbøger*), the volunteer-verified transcriptions of Danish parish registers released by the Danish National Archives (Rigsarkivet) under CC BY 4.0 (https://huggingface.co/datasets/RA-Data-Science/DiEm_HTR), and are re-used here with attribution under that licence. They preserve authentic orthography, abbreviations (Dom:, Trin:, u: c:), personal and place names, and record phrasing. The text is reordered at line level; no source document is reproduced whole. (Provenance check: of the 36,056 unique strings, 39% are verbatim DiEm lines and 71% appear verbatim within a DiEm page; 99% of word tokens are in the DiEm vocabulary.)
 
 ## Known characteristics (read before use)
 
-1. **Diacritic fidelity varies by font.** 42% of lines contain the Danish letters æ, ø or å. Some of the rendering fonts draw ø and æ with subtle or absent distinguishing strokes, as many historical hands also did. If your use case requires strict diacritic visual fidelity, inspect the font styles in `samples/` first.
+1. **Diacritic fidelity varies by font.** 42.1% of lines contain æ (7.6%) or ø (37.5%); the period form *aa* appears in 22% of lines, while the modern letter *å* (official only from 1948) occurs in just 8 of 160,000 lines (0.005%), where the source transcription uses a modernised spelling. Some rendering fonts draw ø and æ with subtle or absent distinguishing strokes, as many historical hands also did. If your use case requires strict diacritic visual fidelity, inspect the font styles in `samples/` first.
 2. **Editorial marks from source conventions.** A small share of lines contains editorial characters inherited from the source transcription conventions, including `#` (~9% of lines) and `¬` (~7%, line-break hyphenation mark), plus authentic period notation such as `†` (death) and `☿` (weekday symbol). These characters appear in both image and label, so image-text consistency is preserved. Strip or keep them according to your target alphabet.
 3. **Line-level only.** No page layout, no ALTO/PAGE hierarchy: this is a line-image + text dataset intended for recogniser training, not segmentation.
 
@@ -89,4 +89,4 @@ A benchmark paper describing the surrounding evaluation work is in preparation; 
 
 ## Acknowledgements
 
-Generated as part of a production HTR effort for historical Danish property and parish records. Thanks to the maintainers of the public Danish transcription corpora that provided the source text distributions.
+Generated as part of a production HTR effort for historical Danish property and parish records. The source text comes from the DiEm HTR dataset (*Digitalisering af Enesteministerialbøger*) produced by the Danish National Archives (Rigsarkivet) and its volunteer transcribers, released under CC BY 4.0; this work gratefully re-uses that text with attribution.
