@@ -46,7 +46,20 @@ Each manifest row:
  "split": "train"}
 ```
 
-Splits are provided (train/val/test) for reproducibility, though for augmentation use the whole set is typically folded into training.
+The released manifest labels every line `train`: the set was built purely as a pre-training / augmentation source, with final accuracy always reported on **held-out real documents** (a synthetic test split is not a meaningful target). The generator (below) can instead emit explicit, reproducible `train`/`val`/`test` splits if you need them.
+
+## Reproducing the data (generation code)
+
+The full generation pipeline lives in [`generator/`](generator/) — rendering, degradation, splitting and a rich per-line manifest, deterministic given a seed. It reads this repository's `manifest.jsonl` as its source-text pool, so you can regenerate the dataset from the exact same 18th-century Danish lines:
+
+```bash
+cd generator
+pip install -r requirements.txt
+# add the historical fonts named in generator/fonts/README.md, then:
+python generate.py --config config.yaml --out out/
+```
+
+Each regenerated line records the **font, every degradation parameter, and its split** in the manifest, so individual factors (blur, stroke weight, bleed-through, ...) can be isolated for diagnostic use. See [`generator/README.md`](generator/README.md) for the method, the fonts (with sources and licences) and the source-corpora attribution.
 
 ## Source text
 

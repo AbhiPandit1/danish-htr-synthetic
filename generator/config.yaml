@@ -1,0 +1,45 @@
+# Configuration for the Danish HTR synthetic line generator.
+# Every value here is a documented, reproducible knob. Change the seed to get
+# a different (but still fully recorded) realisation of the dataset.
+
+seed: 1700                      # master seed; line i uses seed + i
+corpus: "../manifest.jsonl"     # the released manifest IS the source text pool (field "text")
+era_bucket: "1700s"
+corpus_tag: "synthetic_1700s"
+
+# Output line height in pixels (recognition crops). The released set used 192.
+target_height: 192
+
+# train / val / test ratios (must sum to 1.0). Split is by text hash.
+splits:
+  train: 0.90
+  val: 0.05
+  test: 0.05
+
+# Fonts. Place the TTF/OTF files under fonts/ and list them here.
+# `style` groups them so the manifest records which script family was used.
+# See fonts/README.md for the exact fonts, sources and licences.
+fonts:
+  - name: "Kurrent"
+    style: "kurrent"            # German/Danish gothic cursive (18th c.)
+    path: "fonts/Kurrent.ttf"
+  - name: "AlteSchwabacher"
+    style: "fraktur"            # broken-letter administrative hand
+    path: "fonts/AlteSchwabacher.ttf"
+  - name: "HerrVonMuellerhoff"
+    style: "copperplate"        # English roundhand / copperplate
+    path: "fonts/HerrVonMuellerhoff-Regular.ttf"
+  - name: "PetitFormalScript"
+    style: "copperplate"
+    path: "fonts/PetitFormalScript-Regular.ttf"
+
+# Degradation parameter RANGES (min, max). Each line samples within these and
+# records the exact value it drew, so individual factors can be isolated.
+degradation:
+  ink_gray: [0, 55]             # added to pure-black ink (higher = lighter)
+  paper_tone: [205, 243]        # background paper grey
+  paper_texture_amp: [2.0, 10.0]
+  bleed_through_prob: 0.35
+  blur_sigma: [0.0, 1.4]
+  noise_std: [0.0, 9.0]
+  rotation_deg: [-2.0, 2.0]
