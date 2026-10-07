@@ -60,7 +60,11 @@ def main() -> None:
     seed = args.seed if args.seed is not None else cfg["seed"]
 
     fonts = resolve_fonts(cfg, root)
-    texts = load_lines(root / cfg["corpus"])
+    texts = load_lines(
+        root / cfg["corpus"],
+        dedup=cfg.get("dedup", False),
+        normalize=cfg.get("normalize") or None,
+    )
     if args.n:
         texts = texts[: args.n]
     print(f"corpus: {len(texts)} lines | fonts: {[f['name'] for f in fonts]}")

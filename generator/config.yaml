@@ -43,3 +43,13 @@ degradation:
   blur_sigma: [0.0, 1.4]
   noise_std: [0.0, 9.0]
   rotation_deg: [-2.0, 2.0]
+
+# Keep every corpus row (same text + different font/degradation = distinct
+# line), which reproduces the full 160k set. Set true to keep only unique text.
+dedup: false
+
+# Optional character normalisation applied to the source text before rendering.
+# Empty = render exactly as transcribed. The released corpus is already
+# period-faithful (no "å"); this hook is here for other corpora, e.g.:
+#   normalize: {"å": "aa"}
+normalize: {}

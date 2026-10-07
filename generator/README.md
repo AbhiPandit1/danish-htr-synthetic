@@ -64,24 +64,25 @@ be used as a **controlled diagnostic benchmark** — e.g. measure accuracy vs.
 ## Source corpora (text)
 
 The text is **not synthetic**. Each string is a real transcription drawn from
-openly available eighteenth-century Danish sources — principally **parish
-registers (kirkebøger)** and **administrative petition records (supplikker)**.
-The transcriptions are the work of the archives and volunteers who produced
-them; this dataset re-uses only the text strings, under their open terms, and
-credits that upstream transcription effort. Provide them to the generator as
-`data/texts.jsonl` (one JSON object per line with a `"text"` field) or a plain
-`.txt` file (one transcription per line). The released 160k manifest's `text`
-column is exactly this corpus and can be used directly.
+the **DiEm HTR dataset** (*Digitalisering af Enesteministerialbøger*) — the
+volunteer-verified transcriptions of Danish **parish registers (kirkebøger)**
+released by the Danish National Archives (Rigsarkivet) under CC BY 4.0
+(https://huggingface.co/datasets/RA-Data-Science/DiEm_HTR). This dataset re-uses
+only the text strings, under that licence, and credits that upstream
+transcription effort. Provenance is verifiable: of the 36,056 unique strings in
+this repo's `manifest.jsonl`, 39% are verbatim DiEm transcription lines and 71%
+appear verbatim within a DiEm page, with 99% of word tokens in the DiEm
+vocabulary. The generator reads this repo's `manifest.jsonl` (field `"text"`)
+directly, or any `.txt` file with one transcription per line.
 
 ### Orthography note (æ / ø / å)
 
-18th-century Danish did **not** use the letter **å** (introduced officially in
-1948); the sound was written **aa**, and **ø** was frequently written **ö**.
-The pipeline renders the transcription strings **as given in the source** — it
-does not normalise or modernise spelling. Any `å`/`ø` present therefore comes
-from the source transcription's own editorial conventions, not from the
-generator; if a fully period-faithful corpus is required, normalise the text
-file before generation (`å→aa`) and the images will follow.
+Eighteenth-century Danish wrote the sound later spelled **å** as **aa** (22% of
+lines here); the modern letter **å** (official only from 1948) occurs in just
+8 of 160,000 lines (0.005%), where the source transcription itself uses a
+modernised spelling. The pipeline renders strings **as given in the source** and
+does not modernise spelling. For a specific convention, set `normalize` in
+`config.yaml` (for example `normalize: {"å": "aa"}`); it is off by default.
 
 ---
 
